@@ -45,7 +45,6 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return "Inventory :  [ id = " + id + " name = " + name + " language = " + price + " location = " + location
-                + "]";
+        return "Inventory :  [ id = " + id + " name = " + name + " price = " + price + " location = " + location + "]";
     }
 }

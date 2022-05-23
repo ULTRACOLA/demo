@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Controller
 public class inventoryController {
     @Autowired
