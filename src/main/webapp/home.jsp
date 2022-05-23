@@ -30,8 +30,6 @@
             </div>
             <p>input data here</p>
             <form action="addInventory">
-                <span>id : </span>
-                <input type="text" name="id"><br>
                 <span>name : </span>
                 <input type="text" name="name"><br>
                 <span>amount : </span>
