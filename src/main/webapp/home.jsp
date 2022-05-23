@@ -61,6 +61,31 @@
                 <input type="submit"><br>
             </form>
 
+            <div align="left">
+            <div>
+                <table border="1" cellpadding="5">
+                    <caption><h2>List of deleted inventorys</h2></caption>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Amount</th>
+                        <th>Original Id</th>
+                        <th>Comment</th>
+                    </tr>
+                    <c:forEach var="deletedInventory" items="${DeletedInventorys}">
+                        <tr>
+                            <td><c:out value="${deletedInventory.id}" /></td>
+                            <td><c:out value="${deletedInventory.name}" /></td>
+                            <td><c:out value="${deletedInventory.location}" /></td>
+                            <td><c:out value="${deletedInventory.amount}" /></td>
+                            <td><c:out value="${deletedInventory.originalId}" /></td>
+                            <td><c:out value="${deletedInventory.comment}" /></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+
             <p>add location here</p>
             <form action="setLocation">
                 <span>id : </span>

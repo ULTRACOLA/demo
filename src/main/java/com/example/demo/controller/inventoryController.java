@@ -23,8 +23,10 @@ public class inventoryController {
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("home.jsp");
         List<Inventory> Inventorys = inventoryDao.findAll();
+        List<DeletedInventory> deletedInventories = deletedInventoryDao.findAll();
 
         mv.addObject("Inventorys", Inventorys);
+        mv.addObject("DeletedInventorys", deletedInventories);
         return mv;
     }
 
