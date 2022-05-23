@@ -18,7 +18,7 @@
                         <th>Location</th>
                         <th>Amount</th>
                     </tr>
-                    <c:forEach var="inventory" items="${Inventorys}">
+                    <c:forEach var="inventory" items="${inventorys}">
                         <tr>
                             <td><c:out value="${inventory.id}" /></td>
                             <td><c:out value="${inventory.name}" /></td>
@@ -61,6 +61,13 @@
                 <input type="submit"><br>
             </form>
 
+            <p>recover data here</p>
+            <form action="recoverInventory">
+                <span>id : </span>
+                <input type="text" name="id"><br>
+                <input type="submit"><br>
+            </form>
+
             <div align="left">
             <div>
                 <table border="1" cellpadding="5">
@@ -73,7 +80,7 @@
                         <th>Original Id</th>
                         <th>Comment</th>
                     </tr>
-                    <c:forEach var="deletedInventory" items="${DeletedInventorys}">
+                    <c:forEach var="deletedInventory" items="${deletedInventorys}">
                         <tr>
                             <td><c:out value="${deletedInventory.id}" /></td>
                             <td><c:out value="${deletedInventory.name}" /></td>
@@ -85,15 +92,6 @@
                     </c:forEach>
                 </table>
             </div>
-
-            <p>add location here</p>
-            <form action="setLocation">
-                <span>id : </span>
-                <input type="text" name="id"><br>
-                <span>location : </span>
-                <input type="text" name="location"><br>
-                <input type="submit"><br>
-            </form>
         </div>
     </body>
 </html>

@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.List;
-
 import com.example.demo.dao.DeletedInventoryDao;
 import com.example.demo.dao.InventoryDao;
 import com.example.demo.model.DeletedInventory;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class inventoryController {
+public class InventoryController {
     @Autowired
     InventoryDao inventoryDao;
     @Autowired
@@ -22,11 +21,11 @@ public class inventoryController {
     @RequestMapping("/")
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("home.jsp");
-        List<Inventory> Inventorys = inventoryDao.findAll();
+        List<Inventory> inventorys = inventoryDao.findAll();
         List<DeletedInventory> deletedInventories = deletedInventoryDao.findAll();
 
-        mv.addObject("Inventorys", Inventorys);
-        mv.addObject("DeletedInventorys", deletedInventories);
+        mv.addObject("inventorys", inventorys);
+        mv.addObject("deletedInventorys", deletedInventories);
         return mv;
     }
 
@@ -56,12 +55,16 @@ public class inventoryController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/setLocation")
-    public String setLocation(@RequestParam int id, String location) {
-        Inventory inventory = inventoryDao.getReferenceById(id);
-        inventory.setLocation(location);
-        inventoryDao.save(inventory);
+    @RequestMapping(value = "/recoverInventory")
+    public String recoverInventory(@RequestParam int id) {
+        DeletedInventory recoverItem = deletedInventoryDao.getReferenceById(id);
+        Inventory newRecoverItem = new Inventory();
+        newRecoverItem.setId(recoverItem.getOriginalId());
+        newRecoverItem.setAmount(recoverItem.getAmount());
+        newRecoverItem.setLocation(recoverItem.getLocation());
+        newRecoverItem.setName(recoverItem.getName());
+        deletedInventoryDao.deleteById(id);
+        inventoryDao.save(newRecoverItem);
         return "redirect:/";
     }
-
 }
