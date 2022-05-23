@@ -8,7 +8,7 @@ public class Inventory {
     @Id
     private int id;
     private String name;
-    private int price;
+    private int amount;
     private String location;
 
     public String getLocation() {
@@ -19,12 +19,12 @@ public class Inventory {
         this.location = location;
     }
 
-    public int getPrice() {
-        return this.price;
+    public int getAmount() {
+        return this.amount;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getId() {
@@ -45,6 +45,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return "Inventory :  [ id = " + id + " name = " + name + " price = " + price + " location = " + location + "]";
+        return "Inventory :  [ id = " + id + " name = " + name + " amount = " + amount + " location = " + location
+                + "]";
     }
 }

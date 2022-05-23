@@ -1,4 +1,4 @@
-insert into inventory values (1, 'home','Switch', 300);
-insert into inventory values (2, 'home','ps5', 400);
-insert into inventory values (3, 'home','XBOXONE', 450);
-insert into inventory values (4, 'home','PC', 1000);
+insert into inventory values (1, 300, 'home','Switch');
+insert into inventory values (2, 400, 'home','ps5');
+insert into inventory values (3, 500, 'home','XBOXONE');
+insert into inventory values (4, 600, 'home','PC');

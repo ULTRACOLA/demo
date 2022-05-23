@@ -16,14 +16,14 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Location</th>
-                        <th>Price</th>
+                        <th>Amount</th>
                     </tr>
                     <c:forEach var="inventory" items="${Inventorys}">
                         <tr>
                             <td><c:out value="${inventory.id}" /></td>
                             <td><c:out value="${inventory.name}" /></td>
                             <td><c:out value="${inventory.location}" /></td>
-                            <td><c:out value="${inventory.price}" /></td>
+                            <td><c:out value="${inventory.amount}" /></td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -34,8 +34,8 @@
                 <input type="text" name="id"><br>
                 <span>name : </span>
                 <input type="text" name="name"><br>
-                <span>price : </span>
-                <input type="text" name="price"><br>
+                <span>amount : </span>
+                <input type="text" name="amount"><br>
                 <span>location : </span>
                 <input type="text" name="location"><br>
                 <input type="submit"><br>
@@ -47,8 +47,8 @@
                 <input type="text" name="id"><br>
                 <span>name : </span>
                 <input type="text" name="name"><br>
-                <span>price : </span>
-                <input type="text" name="price"><br>
+                <span>amount : </span>
+                <input type="text" name="amount"><br>
                 <span>location : </span>
                 <input type="text" name="location"><br>
                 <input type="submit"><br>
@@ -58,6 +58,8 @@
             <form action="deleteInventory">
                 <span>id : </span>
                 <input type="text" name="id"><br>
+                <span>comment : </span>
+                <input type="text" name="comment"><br>
                 <input type="submit"><br>
             </form>
 

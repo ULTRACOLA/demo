@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import java.util.List;
+
+import com.example.demo.dao.DeletedInventoryDao;
 import com.example.demo.dao.InventoryDao;
+import com.example.demo.model.DeletedInventory;
 import com.example.demo.model.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class inventoryController {
     @Autowired
     InventoryDao inventoryDao;
+    @Autowired
+    DeletedInventoryDao deletedInventoryDao;
 
     @RequestMapping("/")
     public ModelAndView home() {
@@ -36,7 +41,15 @@ public class inventoryController {
     }
 
     @RequestMapping(value = "/deleteInventory")
-    public String deleteInventory(@RequestParam int id) {
+    public String deleteInventory(@RequestParam int id, String comment) {
+        Inventory removeItem = inventoryDao.getReferenceById(id);
+        DeletedInventory newRemovItem = new DeletedInventory();
+        newRemovItem.setOriginalId(removeItem.getId());
+        newRemovItem.setLocation(removeItem.getLocation());
+        newRemovItem.setAmount(removeItem.getAmount());
+        newRemovItem.setName(removeItem.getName());
+        newRemovItem.setComment(comment);
+        deletedInventoryDao.save(newRemovItem);
         inventoryDao.deleteById(id);
         return "redirect:/";
     }
